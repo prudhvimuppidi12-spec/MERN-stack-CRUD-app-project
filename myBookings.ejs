@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Bookings</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/dashboard?userId=<%= userId %>">🚆 My Bookings</a>
+    <a href="/dashboard?userId=<%= userId %>" class="btn btn-light btn-sm">Back</a>
+  </div>
+</nav>
+
+<div class="container mt-4">
+<h3>My Bookings</h3>
+
+<% if(bookings.length === 0){ %>
+<p>No bookings yet</p>
+<% } %>
+
+<% bookings.forEach(item=>{ %>
+<div class="card p-3 mb-3">
+<h5><%= item.trainId.name %></h5>
+<p><%= item.trainId.source %> → <%= item.trainId.destination %></p>
+<p>Total Passengers: <%= item.totalPassengers %></p>
+<p>Date: <%= item.bookingDate.toDateString() %></p>
+
+<table class="table">
+<tr><th>Name</th><th>Age</th></tr>
+<% item.passengers.forEach(p=>{ %>
+<tr>
+<td><%= p.name %></td>
+<td><%= p.age %></td>
+</tr>
+<% }) %>
+</table>
+
+</div>
+<% }) %>
+
+</div>
+</body>
+</html>

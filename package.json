@@ -1,0 +1,19 @@
+{
+  "name": "ticket-booking",
+  "version": "1.0.0",
+  "description": "Project on ticket Booking",
+  "license": "ISC",
+  "author": "Prudhvi and Manohar",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.2.1",
+    "path": "^0.12.7"
+  }
+}

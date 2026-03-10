@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RailBook - Login</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e0eafc, #cfdef3); /* lighter than home page */
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Navbar */
+    .navbar-professional {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #0a1f44; /* dark blue for contrast */
+      padding: 0.75rem 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+
+    .navbar-professional .navbar-brand {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+
+    .navbar-professional .btn-home {
+      background-color: #ffffff;
+      color: #0a1f44;
+      border: none;
+      padding: 6px 16px;
+      border-radius: 25px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-professional .btn-home:hover {
+      background-color: #f1f1f1;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Login Card */
+    .login-card {
+      background: #ffffff;
+      padding: 50px 35px;
+      border-radius: 15px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      margin-top: 120px; /* space for navbar */
+    }
+
+    .login-card h2 {
+      color: #0a1f44; /* match navbar for cohesion */
+      margin-bottom: 30px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    input.form-control {
+      margin-bottom: 18px;
+      height: 48px;
+      font-size: 16px;
+      border-radius: 12px;
+      border: 1px solid #ced4da;
+      transition: all 0.3s ease;
+    }
+
+    input.form-control:focus {
+      border-color: #0a1f44;
+      box-shadow: 0 0 8px rgba(10,31,68,0.3);
+    }
+
+    .btn-login {
+      background-color: #0a1f44; /* match navbar for professional look */
+      border: none;
+      height: 48px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      color: white;
+    }
+
+    .btn-login:hover {
+      background-color: #07162d;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    .register-link {
+      margin-top: 18px;
+      display: block;
+      font-size: 14px;
+      color: #0a1f44;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .register-link:hover {
+      color: #07162d;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Professional Navbar -->
+  <nav class="navbar-professional">
+    <span class="navbar-brand">🚅Login</span>
+    <a href="/" class="btn btn-warning"><i class="fas fa-home"></i> Home</a>
+  </nav>
+
+  <!-- Login Card -->
+  <div class="login-card">
+    <h2>Login</h2>
+    <form method="POST" action="/login">
+      <input class="form-control" name="email" placeholder="Email" type="email" required>
+      <input class="form-control" name="password" placeholder="Password" type="password" required>
+      <button class="btn btn-login w-100 mt-3">Login</button>
+    </form>
+    <a href="/register" class="register-link">Don't have an account? Register</a>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+</body>
+</html>

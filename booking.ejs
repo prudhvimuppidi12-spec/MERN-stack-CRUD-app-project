@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Booking</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/dashboard?userId=<%= userId %>">🚆 Happy Journey</a>
+    <a href="/dashboard?userId=<%= userId %>" class="btn btn-light btn-sm">Back</a>
+  </div>
+</nav>
+
+<div class="container mt-4">
+<h4><%= train.name %></h4>
+<p><%= train.source %> → <%= train.destination %></p>
+
+<form method="POST" action="/book/<%=train._id%>/<%=userId%>">
+
+<label>No. of Passengers</label>
+<input type="number" name="totalPassengers" id="totalPassengers"
+class="form-control mb-3" min="1" max="<%=train.availableSeats%>" required>
+
+<div id="passengerFields"></div>
+
+<button class="btn btn-success mt-3">Confirm Booking</button>
+</form>
+</div>
+
+<script>
+document.getElementById("totalPassengers").addEventListener("input", function() {
+  const count = this.value;
+  const container = document.getElementById("passengerFields");
+  container.innerHTML = "";
+
+  for (let i = 0; i < count; i++) {
+    container.innerHTML += `
+      <div class="card p-3 mb-3">
+        <h6>Passenger ${i + 1}</h6>
+        <input class="form-control mb-2" name="name[]" placeholder="Full Name" required>
+        <input type="number" class="form-control" name="age[]" placeholder="Age" required>
+      </div>
+    `;
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚂 Happy Journey - Train Booking App</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Animate.css for smooth fade-in -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #f0f4ff, #e2e8ff);
+      overflow-x: hidden;
+    }
+
+    /* Navbar Shadow */
+    .navbar {
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(to right, #0d6efd, #0a58ca);
+      color: white;
+      padding: 120px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      animation: fadeInDown 1s ease forwards;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-top: 20px;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    .hero a.btn {
+      margin-top: 30px;
+      font-weight: bold;
+      transition: transform 0.3s;
+    }
+
+    .hero a.btn:hover {
+      transform: scale(1.05);
+    }
+
+    /* 3D Card Feature */
+    .card-3d {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border-radius: 20px;
+      cursor: pointer;
+      transform-style: preserve-3d;
+    }
+
+    .card-3d:hover {
+      transform: rotateY(10deg) rotateX(5deg) translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+
+    .feature-icon {
+      font-size: 50px;
+      color: #0d6efd;
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+
+    .card-3d:hover .feature-icon {
+      transform: rotate(15deg);
+    }
+
+    footer {
+      background-color: #212529;
+      color: white;
+      padding: 20px 0;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    /* Floating Chat Button */
+    #chat-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0d6efd;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: transform 0.3s;
+    }
+    #chat-button:hover {
+      transform: scale(1.1);
+    }
+
+    /* Chat modal */
+    #chat-modal {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 300px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    #chat-modal .chat-header {
+      background: #0d6efd;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 15px 15px 0 0;
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+    }
+
+    #chat-modal .chat-body {
+      padding: 15px;
+    }
+
+    #chat-modal #chat-message {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      margin-bottom: 10px;
+    }
+
+    #chat-modal button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      background: #0d6efd;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #chat-modal button:hover {
+      background: #0b5ed7;
+    }
+
+    /* Animate Keyframes */
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="/about">🚆Happy Journey- Online Train Ticket Booking App</a>
+    <div>
+      <a href="/login" class="btn btn-outline-light me-2">User Login</a>
+      <a href="/register" class="btn btn-primary me-2">Register</a>
+      <a href="/admin" class="btn btn-warning">Admin</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero text-center">
+  <div class="container">
+    <h1>Book Train Tickets Easily</h1>
+    <p>Fast • Secure • Reliable Online Train Reservation System</p>
+    <div>
+      <a href="/login" class="btn btn-outline-light btn-lg">Login</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section class="container py-5">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">Why Choose Us?</h2>
+  </div>
+
+  <div class="row text-center">
+
+    <div class="col-md-4 mb-4">
+      <div class="card card-3d shadow-sm p-4">
+        <i class="fas fa-clock feature-icon mb-3"></i>
+        <h5>Quick Booking</h5>
+        <p>Book tickets in seconds with our simple interface.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card card-3d shadow-sm p-4">
+        <i class="fas fa-lock feature-icon mb-3"></i>
+        <h5>Secure System</h5>
+        <p>Advanced security to protect your account and data.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card card-3d shadow-sm p-4">
+        <i class="fas fa-train feature-icon mb-3"></i>
+        <h5>Real-time Availability</h5>
+        <p>Check live seat availability instantly.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>©️ 2026 Happy Journey | All Rights Reserved</p>
+  </div>
+</footer>
+
+<!-- Floating Chat Button -->
+<div id="chat-button" style="
+position: fixed;
+bottom: 20px;
+right: 20px;
+background: #0d6efd;
+color: white;
+padding: 12px 18px;
+border-radius: 50px;
+cursor: pointer;
+font-weight: bold;
+z-index: 1000;">
+💬 Help
+</div>
+
+<!-- Chat Modal -->
+<div id="chat-modal" style="
+display:none;
+position: fixed;
+bottom: 80px;
+right: 20px;
+width: 300px;
+background: white;
+border-radius: 10px;
+box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+flex-direction: column;
+z-index:1000;">
+
+  <div style="background:#0d6efd;color:white;padding:10px;border-radius:10px 10px 0 0;">
+    Chat Support
+    <span id="close-chat" style="float:right;cursor:pointer;">&times;</span>
+  </div>
+
+  <div style="padding:10px;">
+    <div id="chat" style="height:200px;overflow-y:auto;margin-bottom:10px;"></div>
+
+    <form id="chat-form">
+      <input type="text" id="userInput" class="form-control mb-2" placeholder="Type message..." required>
+      <button class="btn btn-primary w-100">Send</button>
+    </form>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const chatButton = document.getElementById('chat-button');
+  const chatModal = document.getElementById('chat-modal');
+  const closeChat = document.getElementById('close-chat');
+  const chatForm = document.getElementById('chat-form');
+  const chatBox = document.getElementById('chat');
+  const userInput = document.getElementById('userInput');
+
+  if (!chatForm || !userInput || !chatBox) {
+    console.log("Chat elements not found!");
+    return;
+  }
+
+  chatButton.addEventListener('click', () => {
+    chatModal.style.display = 'flex';
+  });
+
+  closeChat.addEventListener('click', () => {
+    chatModal.style.display = 'none';
+  });
+
+  chatForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    let message = userInput.value.trim();
+    if (!message) return;
+
+    chatBox.innerHTML += `
+      <div class="text-end mb-2">
+        <span class="badge bg-primary">${message}</span>
+      </div>
+    `;
+
+    let reply = getBotReply(message);
+
+    setTimeout(() => {
+      chatBox.innerHTML += `
+        <div class="mb-2">
+          <span class="badge bg-secondary">${reply}</span>
+        </div>
+      `;
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }, 500);
+
+    userInput.value = "";
+  });
+
+  function getBotReply(message) {
+    message = message.toLowerCase();
+
+    if (message.includes("hello")) {
+      return "Hi there! 👋";
+    } else if (message.includes("register")) {
+      return "To register, click on Register button on the home page";
+    } else if (message.includes("booking")) {
+      return "You can book tickets after logging in.";
+    } else if (message.includes("ok")) {
+      return "Is there anything to Chat?";
+    }else if (message.includes("seat")) {
+      return "Available seats are shown on the dashboard for each train";
+    }else if (message.includes("full")) {
+      return "If seats are 0, booking is disabled automatically";
+    }else if (message.includes("passenger")) {
+      return "Enter the details of passengers and number of passengers before confirming";
+    }else if (message.includes("cancel")) {
+      return "Cancellation feature is not available. It can be added in the future";
+    }else if (message.includes("add train")) {
+      return "Only admin can add trains";
+    }else if (message.includes("password")) {
+      return "Enter the correct password for logging in";
+    }else if (message.includes("login")) {
+      return "Enter the correct login details for logging in";
+    }else if (message.includes("thank you")) {
+      return "pleasure chatting with you I hope your issue got resolved";
+    } else {
+      return "Sorry, I don't understand";
+    }
+  }
+
+});
+</script>
+</body>
+</html>

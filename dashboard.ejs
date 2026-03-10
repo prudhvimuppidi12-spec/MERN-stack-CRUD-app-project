@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container">
+    <span class="navbar-brand">🚆 Happy Journey</span>
+    <div>
+      <a href="/myBookings/<%= userId %>" class="btn btn-warning btn-sm me-2">My Bookings</a>
+      <a href="/" class="btn btn-danger btn-sm">Logout</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+<h2>Available Trains</h2>
+
+<% trains.forEach(train=>{ %>
+<div class="card p-3 mb-3 shadow-sm">
+<h5><%= train.name %></h5>
+<p><%= train.source %> → <%= train.destination %></p>
+<p>Seats: <%= train.availableSeats %></p>
+
+<% if(train.availableSeats > 0){ %>
+<a href="/book/<%=train._id%>/<%=userId%>" class="btn btn-warning">Book</a>
+<% } else { %>
+<button class="btn btn-secondary" disabled>Full</button>
+<% } %>
+
+</div>
+<% }) %>
+
+</div>
+</body>
+</html>
